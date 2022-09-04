@@ -419,11 +419,11 @@ mysql> SELECT * FROM favorites;
 +----+------------------+----------+-------------+                                                                                          
 | id | class            | sport    | students_id |                                                                                          
 +----+------------------+----------+-------------+                                                                                          
-|  2 | music            | hip-hop  |           6 |                                                                                          
-|  3 | arts             | boxing   |           1 |                                                                                          
-|  4 | literature       | tennis   |           3 |                                                                                          
-|  5 | computer science | tennis   |           5 |                                                                                          
-|  6 | arts             | baseball |           4 |                                                                                          
+|  2 | Music            | hip-hop  |           6 |                                                                                          
+|  3 | Arts             | boxing   |           1 |                                                                                          
+|  4 | Literature       | tennis   |           3 |                                                                                          
+|  5 | Computer science | tennis   |           5 |                                                                                          
+|  6 | Arts             | baseball |           4 |                                                                                          
 +----+------------------+----------+-------------+                                                                                          
 5 rows in set (0.00 sec)                                                                                                                    
                                                                                                                                             
@@ -468,8 +468,8 @@ mysql> SELECT favorites.sport FROM students
 +----------+
 | sport    |
 +----------+
-| boxing   |
-| baseball |
+| Boxing   |
+| Baseball |
 +----------+
 2 rows in set (0.00 sec)
 
@@ -479,8 +479,8 @@ mysql> SELECT favorites.class FROM students
 +------------+
 | class      |
 +------------+
-| arts       |
-| literature |
+| Arts       |
+| Literature |
 +------------+
 2 rows in set (0.00 sec)
 
