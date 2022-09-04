@@ -23,3 +23,464 @@ CREATE TABLE ...
    Resultat
 
 ...
+
+------------------------------------------------------
+
+mysql> CREATE DATABASE school
+    -> ;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> CREATE TABLE students(                                                                                                                                                                              
+    -> id INT NOT NULL AUTO_INCREMENT,                                                                                                                                                                     
+    -> name VARCHAR(30),                                                                                                                                                                                   
+    -> city VARCHAR(30),                                                                                                                                                                                   
+    -> PRIMARY KEY (id)                                                                                                                                                                                    
+    -> );                                                                                                                                                                                                  
+Query OK, 0 rows affected (0.01 sec)   
+
+
+mysql> INSERT INTO students (name,city)                                                                                                                                                                    
+    -> VALUES ("Véronique","Paris");                                                                                                                                                                       
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO students (name,city)                                                                                                                                                                    
+    -> VALUES ("Steeven","Lyon");                                                                                                                                                                          
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO students (name,city)                                                                                                                                                                    
+    -> VALUES ("Marc","Marseille");                                                                                                                                                                        
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO students (name,city)                                                                                                                                                                    
+    -> VALUES ("Nour","Lyon");                                                                                                                                                                             
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO students (name,city)                                                                                                                                                                    
+    -> VALUES ("Romain","Paris");                                                                                                                                                                          
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO students (name,city)                                                                                                                                                                    
+    -> VALUES ("Sophie","Paris");                                                                                                                                                                          
+Query OK, 1 row affected (0.01 sec)   
+
+
+mysql> CREATE TABLE languages(                                                                                                                                                                             
+    -> id INT NOT NULL AUTO_INCREMENT,                                                                                                                                                                     
+    -> name VARCHAR(30),                                                                                                                                                                                   
+    -> PRIMARY KEY (id)                                                                                                                                                                                    
+    -> );                                                                                                                                                                                                  
+Query OK, 0 rows affected (0.01 sec)  
+
+
+mysql> INSERT INTO languages (name)                                                                                                                                                                        
+    -> VALUES ("French");                                                                                                                                                                                  
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO languages (name)                                                                                                                                                                        
+    -> VALUES ("English");                                                                                                                                                                                 
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO languages (name)                                                                                                                                                                        
+    -> VALUES ("German");                                                                                                                                                                                  
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO languages (name)                                                                                                                                                                        
+    -> VALUES ("Spanish");                                                                                                                                                                                 
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO languages (name)                                                                                                                                                                        
+    -> VALUES ("Mandarin");                                                                                                                                                                                
+Query OK, 1 row affected (0.00 sec)         
+
+mysql> CREATE TABLE favorites (                                                                                                                                                                            
+    -> id INT NOT NULL AUTO_INCREMENT,                                                                                                                                                                     
+    -> class VARCHAR(30),                                                                                                                                                                                  
+    -> sport VARCHAR(30),                                                                                                                                                                                  
+    -> students_id INT,                                                                                                                                                                                                                                                                                                                         
+    -> FOREIGN KEY (students_id) REFERENCES students(id)                                                                                                                                                   
+    -> );                                                                                                                                                                                                  
+Query OK, 0 rows affected (0.02 sec)     
+
+mysql> INSERT INTO favorites (class,sport,students_id)                                                                                                                                                     
+    -> VALUES ("Maths","Cricket",2);                                                                                                                                                                            
+mysql> INSERT INTO favorites (class,sport,students_id)                                                                                                                                                     
+    -> VALUES ("Music","hip-hop",6);                                                                                                                                                                                                   
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO favorites (class,sport,students_id)                                                                                                                                                     
+    -> VALUES ("Arts","boxing",1);                                                                                                                                                                         
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO favorites (class,sport,students_id)                                                                                                                                                     
+    -> VALUES ("Literature","tennis",3);                                                                                                                                                                   
+Query OK, 1 row affected (0.00 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO favorites (class,sport,students_id)                                                                                                                                                     
+    -> VALUES ("Computer science","tennis",5);                                                                                                                                                             
+Query OK, 1 row affected (0.00 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO favorites (class,sport,students_id)                                                                                                                                                     
+    -> VALUES ("Arts","baseball",4);                                                                                                                                                                       
+Query OK, 1 row affected (0.00 sec)  
+                                           
+					   
+mysql> CREATE TABLE students_languages(                                                                                                                                                                    
+    -> id INT NOT NULL AUTO_INCREMENT,                                                                                                                                                                     
+    -> students_id INT,                                                                                                                                                                                    
+    -> language_id INT,                                                                                                                                                                                    
+    -> PRIMARY KEY (id),                                                                                                                                                                                   
+    -> FOREIGN KEY (students_id) REFERENCES students(id)                                                                                                                                                   
+    -> , FOREIGN KEY (language_id) REFERENCES languages(id)                                                                                                                                                
+    -> );                                                                                                                                                                                                  
+Query OK, 0 rows affected (0.04 sec)                                                                                                                                                                       
+                                                                                                                                                                                                           
+mysql> INSERT INTO students_languages (students_id,language_id)                                                                                                                                            
+    -> VALUES (1,1);                                                                                                                                                                                       
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO students_languages (students_id,language_id)                                                                                                                                            
+    -> VALUES (1,2);                                                                                                                                                                                       
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO students_languages (students_id,language_id)                                                                                                                                            
+    -> VALUES (2,1);                                                                                                                                                                                       
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO students_languages (students_id,language_id)                                                                                                                                            
+    -> VALUES (2,3);                                                                                                                                                                                       
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO students_languages (students_id,language_id)                                                                                                                                            
+    -> VALUES (3,1);                                                                                                                                                                                       
+Query OK, 1 row affected (0.01 sec)  
+
+
+mysql> INSERT INTO students_languages (students_id,language_id)                                                                                                                                            
+    -> VALUES (4,1);  
+Query OK, 1 row affected (0.01 sec)  
+
+mysql> INSERT INTO students_languages (students_id,language_id)                                                                                                                                            
+    -> VALUES (4,2);                                                                                                                                                                                       
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO students_languages (students_id,language_id)                                                                                                                                            
+    -> VALUES (4,4);                                                                                                                                                                                       
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO students_languages (students_id,language_id)                                                                                                                                            
+    -> VALUES (4,5);                                                                                                                                                                                       
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO students_languages (students_id,language_id)                                                                                                                                            
+    -> VALUES (5,1);                                                                                                                                                                                       
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO students_languages (students_id,language_id)                                                                                                                                            
+    -> VALUES (5,5);                                                                                                                                                                                       
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO students_languages (students_id,language_id)                                                                                                                                            
+    -> VALUES (6,1);                                                                                                                                                                                       
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO students_languages (students_id,language_id)                                                                                                                                            
+    -> VALUES (6,2);                                                                                                                                                                                       
+Query OK, 1 row affected (0.01 sec)                                                                                                                                                                        
+                                                                                                                                                                                                           
+mysql> INSERT INTO students_languages (students_id,language_id)                                                                                                                                            
+    -> VALUES (6,3);                                                                                                                                                                                       
+Query OK, 1 row affected (0.01 sec)       
+
+
+
+-------Rapports--------
+
+mysql> SELECT * FROM students WHERE id=3;                    
++----+------+-----------+                                    
+| id | name | city      |                                    
++----+------+-----------+                                    
+|  3 | Marc | Marseille |                                    
++----+------+-----------+                                    
+1 row in set (0.00 sec)     
+
+mysql> SELECT * FROM students WHERE id=6;                    
++----+--------+-------+                                      
+| id | name   | city  |                                      
++----+--------+-------+                                      
+|  6 | Sophie | Paris |                                      
++----+--------+-------+                                      
+1 row in set (0.00 sec)  
+
+mysql> SELECT name,city FROM students WHERE id=1;            
++-----------+-------+                                        
+| name      | city  |                                        
++-----------+-------+                                        
+| Véronique | Paris |                                        
++-----------+-------+                                        
+1 row in set (0.00 sec)   
+
+mysql> SELECT name FROM students WHERE id=2;                 
++---------+                                                  
+| name    |                                                  
++---------+                                                  
+| Steeven |                                                  
++---------+                                                  
+1 row in set (0.01 sec)
+
+mysql> SELECT * FROM students WHERE city="Paris";            
++----+-----------+-------+                                   
+| id | name      | city  |                                   
++----+-----------+-------+                                   
+|  1 | Véronique | Paris |                                   
+|  5 | Romain    | Paris |                                   
+|  6 | Sophie    | Paris |                                   
++----+-----------+-------+                                   
+3 rows in set (0.00 sec) 
+
+mysql> SELECT * FROM students WHERE city="Lyon";             
++----+---------+------+                                      
+| id | name    | city |                                      
++----+---------+------+                                      
+|  2 | Steeven | Lyon |                                      
+|  4 | Nour    | Lyon |                                      
++----+---------+------+                                      
+2 rows in set (0.00 sec)
+
+
+----------Rapport2------
+
+
+mysql> SELECT *                                                                                                    
+    -> FROM students                                                                                    
+    -> INNER JOIN favorites ON students.id =favorites.students_id                                       
+    -> WHERE students.id = 5;                                                                           
++----+--------+-------+------------------+--------+-------------+                                       
+| id | name   | city  | class            | sport  | students_id |                                       
++----+--------+-------+------------------+--------+-------------+                                       
+|  5 | Romain | Paris | computer science | tennis |           5 |                                       
++----+--------+-------+------------------+--------+-------------+                                       
+1 row in set (0.00 sec)                                                                                 
+                                                                                                                                                                                             
+mysql> SELECT students.name,favorites.sport                                                             
+    -> FROM students                                                                                    
+    -> INNER JOIN favorites ON students.id =favorites.students_id                                       
+    -> WHERE students.id = 4;                                                                           
++------+----------+                                                                                     
+| name | sport    |                                                                                     
++------+----------+                                                                                     
+| Nour | baseball |                                                                                     
++------+----------+                                                                                     
+1 row in set (0.00 sec)                                                                                 
+                                                                                                        
+mysql> SELECT students.name,favorites.class                                                             
+    -> FROM students                                                                                    
+    -> INNER JOIN favorites ON students.id =favorites.students_id                                       
+    -> WHERE students.id = 1;                                                                           
++-----------+-------+                                                                                   
+| name      | class |                                                                                   
++-----------+-------+                                                                                   
+| Véronique | arts  |                                                                                   
++-----------+-------+                                                                                   
+1 row in set (0.00 sec)                                                                                 
+                                                                                                        
+mysql> SELECT * FROM students                                                                           
+    -> INNER JOIN favorites ON students.id =favorites.students_id                                       
+    -> WHERE favorites.class = "music";                                                                 
++----+--------+-------+----+-------+---------+-------------+                                            
+| id | name   | city  | id | class | sport   | students_id |                                            
++----+--------+-------+----+-------+---------+-------------+                                            
+|  6 | Sophie | Paris |  2 | music | hip-hop |           6 |                                            
++----+--------+-------+----+-------+---------+-------------+                                            
+1 row in set (0.00 sec)                                                                                 
+                                                                                                        
+mysql> SELECT students.name FROM students                                                               
+    -> INNER JOIN favorites ON students.id =favorites.students_id                                       
+    -> WHERE favorites.sport = "tennis";                                                                
++--------+                                                                                              
+| name   |                                                                                              
++--------+                                                                                              
+| Marc   |                                                                                              
+| Romain |                                                                                              
++--------+                                                                                              
+2 rows in set (0.00 sec)                                                                                
+                                                                                                        
+mysql> SELECT students.name FROM students                                                               
+    -> INNER JOIN favorites ON students.id =favorites.students_id                                       
+    -> WHERE favorites.class = "arts";                                                                  
++-----------+                                                                                           
+| name      |                                                                                           
++-----------+                                                                                           
+| Véronique |                                                                                           
+| Nour      |                                                                                           
++-----------+                                                                                           
+2 rows in set (0.00 sec)                                                                                
+                                                                                                        
+mysql> SELECT COUNT(*) FROM students WHERE students.city="Paris"                                        
+    -> ;                                                                                                
++----------+                                                                                            
+| COUNT(*) |                                                                                            
++----------+                                                                                            
+|        3 |                                                                                            
++----------+                                                                                            
+1 row in set (0.01 sec)                                                                                 
+                                                                                                        
+
+-------Rapports 3--------
+
+mysql> SELECT * FROM students                                                              
+    -> INNER JOIN students_languages ON students_languages.students_id = students.id       
+    -> INNER JOIN languages ON languages.id = students_languages.language_id               
+    -> WHERE students_languages.students_id = 1;                                           
++----+-----------+-------+----+-------------+-------------+----+---------+                 
+| id | name      | city  | id | students_id | language_id | id | name    |                 
++----+-----------+-------+----+-------------+-------------+----+---------+                 
+|  1 | Véronique | Paris |  1 |           1 |           1 |  1 | French  |                 
+|  1 | Véronique | Paris |  2 |           1 |           2 |  2 | English |                 
++----+-----------+-------+----+-------------+-------------+----+---------+                 
+2 rows in set (0.00 sec)                                                                   
+                                                                                           
+mysql> SELECT * FROM students                                                              
+    -> INNER JOIN students_languages ON students_languages.students_id = students.id       
+    -> INNER JOIN languages ON languages.id = students_languages.language_id               
+    -> WHERE students_languages.students_id = 4;                                           
++----+------+------+----+-------------+-------------+----+----------+                      
+| id | name | city | id | students_id | language_id | id | name     |                      
++----+------+------+----+-------------+-------------+----+----------+                      
+|  4 | Nour | Lyon |  6 |           4 |           1 |  1 | French   |                      
+|  4 | Nour | Lyon |  7 |           4 |           2 |  2 | English  |                      
+|  4 | Nour | Lyon |  8 |           4 |           4 |  4 | Spanish  |                      
+|  4 | Nour | Lyon |  9 |           4 |           5 |  5 | Mandarin |                      
++----+------+------+----+-------------+-------------+----+----------+                      
+4 rows in set (0.00 sec)                                                                   
+                                                                                           
+mysql> SELECT languages.name FROM students                                                 
+    -> INNER JOIN students_languages ON students_languages.students_id = students.id       
+    -> INNER JOIN languages ON languages.id = students_languages.language_id               
+    -> WHERE students_languages.students_id = 5;                                           
++----------+                                                                               
+| name     |                                                                               
++----------+                                                                               
+| French   |                                                                               
+| Mandarin |                                                                               
++----------+                                                                               
+2 rows in set (0.00 sec)                                                                   
+
+
+-------Rapports 4 --------
+
+sql> UPDATE students
+    -> SET name = "Jean"
+    -> WHERE id=4;
+
+sql> UPDATE students
+    -> SET city= "Liboure"
+    -> WHERE id=1;
+
+mysql> SELECT * FROM students
+    -> ;
++----+-----------+-----------+
+| id | name      | city      |
++----+-----------+-----------+
+|  1 | Véronique | Libourne  |
+|  2 | Steeven   | Lyon      |
+|  3 | Marc      | Marseille |
+|  4 | Jean      | Lyon      |
+|  5 | Romain    | Paris     |
+|  6 | Sophie    | Paris     |
++----+-----------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> ALTER TABLE favorites ADD CONSTRAINT favorites FOREIGN KEY (students_id) REFERENCES students(id) ON DELETE CASCADE
+    -> ;
+Query OK, 6 rows affected (0.08 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE students_languages ADD CONSTRAINT students_languages FOREIGN KEY (students_id) REFERENCES students(id) ON DELETE CASCADE;
+Query OK, 14 rows affected (0.06 sec)                                                                                                       
+Records: 14  Duplicates: 0  Warnings: 0                                                                                                     
+                                                                                                                                            
+mysql> DELETE FROM students WHERE id=2                                                                                                      
+    -> ;                                                                                                                                    
+Query OK, 1 row affected (0.01 sec)                                                                                                         
+                                                                                                                                            
+mysql> SELECT * FROM students;                                                                                                              
++----+-----------+-----------+                                                                                                              
+| id | name      | city      |                                                                                                              
++----+-----------+-----------+                                                                                                              
+|  1 | Véronique | Libourne  |                                                                                                              
+|  3 | Marc      | Marseille |                                                                                                              
+|  4 | Jean      | Lyon      |                                                                                                              
+|  5 | Romain    | Paris     |                                                                                                              
+|  6 | Sophie    | Paris     |                                                                                                              
++----+-----------+-----------+                                                                                                              
+5 rows in set (0.00 sec)                                                                                                                    
+                                                                                                                                            
+mysql> SELECT * FROM favorites;                                                                                                             
++----+------------------+----------+-------------+                                                                                          
+| id | class            | sport    | students_id |                                                                                          
++----+------------------+----------+-------------+                                                                                          
+|  2 | music            | hip-hop  |           6 |                                                                                          
+|  3 | arts             | boxing   |           1 |                                                                                          
+|  4 | literature       | tennis   |           3 |                                                                                          
+|  5 | computer science | tennis   |           5 |                                                                                          
+|  6 | arts             | baseball |           4 |                                                                                          
++----+------------------+----------+-------------+                                                                                          
+5 rows in set (0.00 sec)                                                                                                                    
+                                                                                                                                            
+mysql> SELECT * FROM students_languages;                                                                                                    
++----+-------------+-------------+                                                                                                          
+| id | students_id | language_id |                                                                                                          
++----+-------------+-------------+                                                                                                          
+|  1 |           1 |           1 |                                                                                                          
+|  2 |           1 |           2 |                                                                                                          
+|  5 |           3 |           1 |                                                                                                          
+|  6 |           4 |           1 |                                                                                                          
+|  7 |           4 |           2 |                                                                                                          
+|  8 |           4 |           4 |                                                                                                          
+|  9 |           4 |           5 |                                                                                                          
+| 10 |           5 |           1 |                                                                                                          
+| 11 |           5 |           5 |                                                                                                          
+| 12 |           6 |           1 |                                                                                                          
+| 13 |           6 |           2 |                                                                                                          
+| 14 |           6 |           3 |                                                                                                          
++----+-------------+-------------+                                                                                                          
+12 rows in set (0.00 sec)                                                                                                                   
+
+mysql> DELETE FROM students WHERE city="Paris";
+Query OK, 2 rows affected (0.01 sec)
+
+
+-------Rapport 5--------
+
+mysql> SELECT * FROM students
+    -> WHERE name LIKE "%e%";
++----+-----------+----------+
+| id | name      | city     |
++----+-----------+----------+
+|  1 | Véronique | Libourne |
+|  4 | Jean      | Lyon     |
++----+-----------+----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT favorites.sport FROM students
+    -> INNER JOIN favorites ON students.id =favorites.students_id
+    -> WHERE name LIKE "%e%";
++----------+
+| sport    |
++----------+
+| boxing   |
+| baseball |
++----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT favorites.class FROM students
+    -> INNER JOIN favorites ON students.id =favorites.students_id
+    -> WHERE city LIKE "%i%";
++------------+
+| class      |
++------------+
+| arts       |
+| literature |
++------------+
+2 rows in set (0.00 sec)
+
